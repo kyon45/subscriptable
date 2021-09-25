@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "outDir": "./lib",
+    "lib": [
+      "ESNEXT"
+    ],
+    // "noImplicitAny": false,
+    "noImplicitThis": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "declaration": true,
+    // "declarationDir": "./typings",
+    "strictNullChecks": true,
+    // "downlevelIteration": true,
+    // "sourceMap": true,
+  },
+  "include": [
+    "src", "test"
+  ]
+}

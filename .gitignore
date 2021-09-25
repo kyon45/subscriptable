@@ -1,0 +1,28 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+
+# production
+lib
+
+# temp
+tmp
+temp
+
+# typings
+typings
+types
+
+# misc
+.DS_Store
+.env
+package-lock.json
+.cache
+*.log*
+.eslintrc.js
+.eslintignore
+
+# IDE
+/.idea*
+/.vscode*
