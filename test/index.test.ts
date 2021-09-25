@@ -6,6 +6,7 @@ import subscriptable from '../';
 class MyData<T> {
   private _data: T[] = [];
   private _name: string;
+  static Meta = '_MyData';
 
   constructor(name: string) {
     this._name = name;
@@ -18,9 +19,22 @@ class MyData<T> {
   push(...values: T[]): void {
     this._data.push(...values);
   }
+
+  static compare() {
+    return true;
+  }
 }
 
 describe('decorator', () => {
+
+  it('should be subscriptable', () => {
+    const d = new MyData<number>('data proxied');
+    d.push(0, 1, 2);
+
+    expect(d[0]).to.equal(0);
+    expect(d[1]).to.equal(1);
+    expect(d[2]).to.equal(2);
+  });
 
   it('should return d.name', () => {
     const d = new MyData<number>('data proxied');
@@ -32,13 +46,9 @@ describe('decorator', () => {
     expect(d[0]).to.equal(undefined);
   });
 
-  it('should be subscriptable', () => {
-    const d = new MyData<number>('data proxied');
-    d.push(0, 1, 2);
-
-    expect(d[0]).to.equal(0);
-    expect(d[1]).to.equal(1);
-    expect(d[2]).to.equal(2);
+  it('should static property and method work well', () => {
+    expect(MyData.Meta).to.equal('_MyData');
+    expect(MyData.compare()).to.equal(true);
   });
 
 });

@@ -1,6 +1,6 @@
 {
   "name": "@kyon45/subscriptable",
-  "version": "0.1.3",
+  "version": "0.1.6",
   "description": "A decorator library makes ESNext Class subscriptable.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

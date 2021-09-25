@@ -1,7 +1,6 @@
 export { default as trap } from './trap';
 
 type Cls = new (...args: any[]) => any;
-type ClassDecorator<TFunction extends Cls> = (target: TFunction) => TFunction | void;
 
 /**
  * A class decorator that makes ESNext Class subscriptable.
@@ -31,8 +30,8 @@ type ClassDecorator<TFunction extends Cls> = (target: TFunction) => TFunction | 
  *
  * ```
  */
-function subscriptable<C extends Cls>(clsProp?: string | symbol): ClassDecorator<C> {
-  const numericGetHandler: ProxyHandler<InstanceType<C>> = {
+function subscriptable(clsProp?: string | symbol): ClassDecorator {
+  const numericGetHandler: ProxyHandler<InstanceType<Cls>> = {
     get(target, propKey) {
       const numericProp = Number(propKey);
 
@@ -49,8 +48,8 @@ function subscriptable<C extends Cls>(clsProp?: string | symbol): ClassDecorator
     }
   };
 
-  const constructProxyHandler: ProxyHandler<C> = {
-    construct(target, args: ConstructorParameters<C>) {
+  const constructProxyHandler: ProxyHandler<Cls> = {
+    construct(target, args: ConstructorParameters<Cls>) {
       // call the constructor normally
       const instance = new target(...args);
 
@@ -59,7 +58,7 @@ function subscriptable<C extends Cls>(clsProp?: string | symbol): ClassDecorator
     }
   };
 
-  return function (target: C) {
+  return function (target: any) {
     return new Proxy(target, constructProxyHandler);
   }
 }
