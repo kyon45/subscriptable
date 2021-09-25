@@ -15,7 +15,7 @@ type ClassDecorator<TFunction extends Cls> = (target: TFunction) => TFunction | 
  * ```
  * "@subscriptable('_data')"  // remove the `"` marks when use
  * class MyData<T> {
- *   private _data: T[];
+ *   private _data: T[] = [];
  * 
  *   push(...values: T[]): void {
  *     this._data.push(...values);

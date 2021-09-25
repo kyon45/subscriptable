@@ -22,7 +22,7 @@ import subscriptable from '@kyon45/subscriptable';
 
 @subscriptable('_data')
 class MyData<T> {
-  private _data: T[];
+  private _data: T[] = [];
 
   push(...values: T[]): void {
     this._data.push(...values);
@@ -46,7 +46,7 @@ import { trap as subscriptable } from '@kyon45/subscriptable';
 import subscriptable from '@kyon45/subscriptable/lib/trap';
 
 class MyData<T> {
-  private _data: T[];
+  private _data: T[] = [];
 
   push(...values: T[]): void {
     this._data.push(...values);

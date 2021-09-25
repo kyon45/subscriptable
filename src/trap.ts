@@ -3,7 +3,7 @@ type Cls = new (...args: any[]) => any;
 /**
  * A trap function that makes ESNext Class subscriptable.
  * @param cls The class constructor to trap.
- * @param clsProp 
+ * @param clsProp
  *   - The property that subscript operation maps to.
  *   - If given `undefined`, then subscript operation maps
  *     to the `at` method invocation.
@@ -12,7 +12,7 @@ type Cls = new (...args: any[]) => any;
  * @example
  * ```
  * class MyData<T> {
- *   private _data: T[];
+ *   private _data: T[] = [];
  * 
  *   push(...values: T[]): void {
  *     this._data.push(...values);
